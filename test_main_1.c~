@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include "main.h"
+
+/**
+ * main - Entry point
+ * Return: Always 0
+ */
+int main(void)
+{
+	int answer;
+
+	answer = _pow(2, 4);
+	printf("%d", answer);
+	return (0);
+}
