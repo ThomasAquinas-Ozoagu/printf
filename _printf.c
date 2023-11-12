@@ -30,8 +30,10 @@ int _printf(const char *format, ...)
 				count += print_s(va_arg(my_vars, const char*));
 			if (format[itr + 1] == 'u')
 				count += print_u(va_arg(my_vars, unsigned int));
-
-
+			if (format[itr + 1] == 'x')
+				count += print_x(va_arg(my_vars, unsigned int));
+			if (format[itr + 1] == 'X')
+				count += print_xx(va_arg(my_vars, unsigned int));
 			if (format[itr + 1] == '%')
 				_putchar('%'),	count++;
 			itr++;

@@ -46,4 +46,15 @@ int _pow(int, int);
 int print_o(unsigned int);
 #endif /* _PRINT_O_ */
 
+#ifndef _PRINT_X_
+#define _PRINT_X_
+int print_x(unsigned int);
+#endif /* _PRINT_X_ */
+
+#ifndef _PRINT_XX_
+#define _PRINT_XX_
+int print_xx(unsigned int);
+#endif /* _PRINT_XX_ */
+
+
 #endif /* _MAIN_H_ */

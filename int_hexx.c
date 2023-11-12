@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 /**
- * print_o - converts integer to base 8
+ * print_xx - converts integer to base 16 in capital
  *
  * @intb: the integer to be converted
  *
  * Return: the number of characters printed
  */
 
-int print_o(unsigned int intb)
+int print_xx(unsigned int intb)
 {
 	int check, prnt, nos = 0;
 	unsigned int *result;
@@ -22,14 +22,18 @@ int print_o(unsigned int intb)
 	for (check = 0; intbb > 0; check++)
 	{
 
-		result[check] = intbb % 8;
-		intbb = intbb / 8;
+		result[check] = intbb % 16;
+		intbb = intbb / 16;
 
 	}
 	for (prnt = check - 1; prnt >= 0; prnt--)
 	{
-
-		_putchar('0' + result[prnt]);
+		if (result[prnt] < 10)
+			_putchar('0' + result[prnt]);
+		if (result[prnt] >= 10)
+		{
+			_putchar('A' + (result[prnt] - 10));
+		}
 		nos++;
 	}
 	free(result);
