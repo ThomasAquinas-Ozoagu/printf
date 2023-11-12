@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_string - puts characters on the screen
+ * print_s - puts characters on the screen
  *
  * @str: string to be printed
  *
