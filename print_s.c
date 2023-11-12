@@ -8,7 +8,7 @@
  * Return: the number of characters printed.
  */
 
-int print_string(const char *str)
+int print_s(const char *str)
 {
 	unsigned int looper, nos = 0;
 

@@ -2,14 +2,14 @@
 #include <stdlib.h>
 
 /**
- * int_oct - converts integer to base 8
+ * print_o - converts integer to base 8
  *
  * @intb: the integer to be converted
  *
  * Return: the number of characters printed
  */
 
-int int_oct(unsigned int intb)
+int print_o(unsigned int intb)
 {
 	int check, prnt, nos = 0;
 	char *result;

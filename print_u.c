@@ -11,7 +11,7 @@ int _pow(int n, int m)
 {
 	int x, suma = 1;
 
-	for(x = m - 1; x > 0; x--)
+	for (x = m - 1; x > 0; x--)
 	{
 		suma = suma * n;
 	}
@@ -44,7 +44,7 @@ int print_u(unsigned int num)
 	for (len = count; len > 0; len--)
 	{
 		piece = _pow(10, len);
-		_putchar(prt/piece + '0');
+		_putchar(prt / piece + '0');
 		prt = prt % piece;
 		total++;
 	}

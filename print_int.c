@@ -11,7 +11,7 @@
 int print_int(int num)
 {
 
-        /* declare variables */
+/* declare variables */
 	unsigned int count, len, prt = num, rem = num;
 	int total = 0, piece = 0;
 
@@ -32,7 +32,7 @@ int print_int(int num)
 	for (len = count; len > 0; len--)
 	{
 		piece = _pow(10, len);
-		_putchar(prt/piece + '0');
+		_putchar(prt / piece + '0');
 		prt = prt % piece;
 		total++;
 	}
