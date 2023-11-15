@@ -5,7 +5,7 @@
  * _pow - finds n to the power of m
  * @n: the number
  * @m: the power
- * Return: the result
+ * Return: Sum
  */
 int _pow(int n, int m)
 {
@@ -25,14 +25,18 @@ int _pow(int n, int m)
  *
  * @num: number to be printed
  *
+ * @buffer: storage buffer
+ *
+ * @start_pt: buffer tracker
+ *
  * Return: number of characters printed
  */
 
-int print_u(unsigned int num)
+int print_u(unsigned int num, char *buffer, int *start_pt)
 {
 	/* declare variables */
 	unsigned int count, len, prt = num, rem = num;
-	int total = 0, piece = 0;
+	int piece = 0;
 
 	/*establish number of digits*/
 	for (count = 0; rem > 0; count++)
@@ -44,10 +48,10 @@ int print_u(unsigned int num)
 	for (len = count; len > 0; len--)
 	{
 		piece = _pow(10, len);
-		_putchar(prt / piece + '0');
+		buffer[*start_pt] = (prt / piece + '0');
 		prt = prt % piece;
-		total++;
+		(*start_pt)++;
 	}
 
-	return (total);
+	return (0);
 }

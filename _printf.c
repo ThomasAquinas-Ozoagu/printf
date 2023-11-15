@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 /**
  * _printf - a function that produces output according to a format
  * @format: The format of the output
@@ -10,40 +11,45 @@ int _printf(const char *format, ...)
 {
 	va_list my_vars;
 	unsigned int itr, count = 0;
+	char *buf;
+	int *str;
 
-	va_start(my_vars, format);
+	buf = malloc(sizeof(char) * 1024);
+	if (buf == NULL)
+		return (-1);
+	str = malloc(sizeof(int));
+	if (str == NULL)
+		return (-1);
+	*str = 0, va_start(my_vars, format);
 	for (itr = 0; format[itr] != '\0'; itr++)
 	{
 		if (format[itr] == '%')
 		{
 			if (format[itr + 1] == 'b')
-				count += int_bin(va_arg(my_vars, int));
+				int_bin(va_arg(my_vars, int), buf, str);
 			if (format[itr + 1] == 'c')
-				_putchar(va_arg(my_vars, int)),	count++;
+				store_char(va_arg(my_vars, int), buf, str);
 			if (format[itr + 1] == 'd')
-				count += print_int(va_arg(my_vars, int));
+				print_int(va_arg(my_vars, int), buf, str);
 			if (format[itr + 1] == 'i')
-				count += print_inti(va_arg(my_vars, int));
+				print_inti(va_arg(my_vars, int), buf, str);
 			if (format[itr + 1] == 'o')
-				count += print_o(va_arg(my_vars, unsigned int));
+				print_o(va_arg(my_vars, unsigned int), buf, str);
 			if (format[itr + 1] == 's')
-				count += print_s(va_arg(my_vars, const char*));
+				print_s(va_arg(my_vars, const char*), buf, str);
 			if (format[itr + 1] == 'u')
-				count += print_u(va_arg(my_vars, unsigned int));
+				print_u(va_arg(my_vars, unsigned int), buf, str);
 			if (format[itr + 1] == 'x')
-				count += print_x(va_arg(my_vars, unsigned int));
+				print_x(va_arg(my_vars, unsigned int), buf, str);
 			if (format[itr + 1] == 'X')
-				count += print_xx(va_arg(my_vars, unsigned int));
+				print_xx(va_arg(my_vars, unsigned int), buf, str);
 			if (format[itr + 1] == '%')
-				_putchar('%'),	count++;
+				store_char('%', buf, str);
 			itr++;
 		}
 		else
-		{
-			_putchar(format[itr]);
-			count++;
-		}
+			store_char(format[itr], buf, str);
 	}
-	va_end(my_vars);
+	va_end(my_vars), count = (*str), post(buf), free(buf), free(str);
 	return (count);
 }

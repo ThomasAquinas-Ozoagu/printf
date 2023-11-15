@@ -6,12 +6,16 @@
  *
  * @intb: the integer to be converted
  *
+ * @buffer: Storage buffer
+ *
+ * @start_pt: tracker for the buffer
+ *
  * Return: the number of characters printed
  */
 
-int print_o(unsigned int intb)
+int print_o(unsigned int intb, char *buffer, int *start_pt)
 {
-	int check, prnt, nos = 0;
+	int check, prnt;
 	unsigned int *result;
 	unsigned int intbb = intb;
 
@@ -29,9 +33,9 @@ int print_o(unsigned int intb)
 	for (prnt = check - 1; prnt >= 0; prnt--)
 	{
 
-		_putchar('0' + result[prnt]);
-		nos++;
+		buffer[*start_pt] = ('0' + result[prnt]);
+		(*start_pt)++;
 	}
 	free(result);
-	return (nos);
+	return (0);
 }

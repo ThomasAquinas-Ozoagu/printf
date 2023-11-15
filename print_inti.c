@@ -1,41 +1,49 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * print_inti - prints integers of different bases on std output
+ * print_inti - prints integers on std output
  *
  * @num: number to be printed
+ *
+ * @buffer: Storage buffer
+ *
+ * @start_pt: where the buffer will start storing input
  *
  * Return: number of characters printed
  */
 
-int print_inti(int num)
+int print_inti(int num, char *buffer, int *start_pt)
 {
-	int qty = 0;
+
+/* declare variables */
+	unsigned int count, len, prt = num, rem = num;
+	int total = 0, piece = 0;
+
 
 	if (num < 0)
 	{
-		_putchar('-');
-		num = -1 * num;
+		buffer[*start_pt] = ('-');
+		(*start_pt)++;
+		prt = -1 * num;
+		rem = -1 * num;
 	}
-	if (num > 999 && num < 10000)
+
+
+	for (count = 0; rem > 0; count++)
 	{
-		_putchar('0' + num / 1000);
-		num = num % 1000;
+		rem /= 10;
 	}
-	if (num > 99 && num < 1000)
+
+
+	for (len = count; len > 0; len--)
 	{
-		_putchar('0' + num / 100);
-		num = num % 100;
+		piece = _pow(10, len);
+		buffer[*start_pt] = (prt / piece + '0');
+		(*start_pt)++;
+		prt = prt % piece;
+		total++;
 	}
-	if (num > 9 && num < 100)
-	{
-		_putchar('0' + num / 10);
-		num = num % 10;
-	}
-	if (num < 10)
-	{
-		_putchar('0' + num);
-		qty++;
-	}
-	return (qty);
+
+	return (total);
 }

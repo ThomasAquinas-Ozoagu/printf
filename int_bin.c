@@ -6,12 +6,16 @@
  *
  * @intb: the integer to be converted
  *
+ * @buffer: accumulator
+ *
+ * @start_pt: tracker for the accumulator
+ *
  * Return: the number of characters printed
  */
 
-int int_bin(int intb)
+int int_bin(int intb, char *buffer, int *start_pt)
 {
-	int check, prnt, nos = 0;
+	int check, prnt;
 	char *result;
 	int intbb = intb;
 
@@ -24,9 +28,9 @@ int int_bin(int intb)
 	}
 	for (prnt = check - 1; prnt >= 0; prnt--)
 	{
-		_putchar('0' + result[prnt]);
-		nos++;
+		buffer[*start_pt] = ('0' + result[prnt]);
+		(*start_pt)++;
 	}
 	free(result);
-	return (nos);
+	return (0);
 }
