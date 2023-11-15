@@ -6,7 +6,6 @@
  * @format: The format of the output
  * Return: the number of characters printed
  */
-
 int _printf(const char *format, ...)
 {
 	va_list my_vars;
@@ -45,11 +44,8 @@ int _printf(const char *format, ...)
 				print_xx(va_arg(my_vars, unsigned int), buf, str);
 			if (format[itr + 1] == '%')
 				store_char('%', buf, str);
-			itr++;
-		}
-		else
+			itr++;	}		else
 			store_char(format[itr], buf, str);
-	}
-	va_end(my_vars), count = (*str), post(buf), free(buf), free(str);
+	}	va_end(my_vars), count = (*str), post(buf), free(buf), free(str);
 	return (count);
 }
